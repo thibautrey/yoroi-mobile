@@ -1,6 +1,6 @@
 // @flow
 import {pluralizeEn, bold, normal, inline} from './util'
-import {termsOfService} from './tos.en'
+import {termsOfService} from './tos.fr-FR'
 
 // Do not translate
 const languages = {
@@ -14,27 +14,27 @@ const languages = {
 }
 
 const datetime = {
-  today: 'Today',
-  yesterday: 'Yesterday',
+  today: `Aujourd'hui`,
+  yesterday: 'Hier',
 }
 
 const walletNameErrors = {
-  tooLong: 'Wallet name cannot exceed 40 letters',
-  nameAlreadyTaken: 'You already have a wallet with this name',
+  tooLong: 'Le nom du portefeuille ne peut pas dépasser 40 caractères',
+  nameAlreadyTaken: 'Un portefeuille du même nom existe déjà',
 }
 
 // common translations shared across multiple places
 const common = {
   ok: 'OK',
-  availableFunds: 'Available funds',
-  pleaseWait: 'please wait ...',
+  availableFunds: 'Fonds disponibles',
+  pleaseWait: 'veuillez patienter ...',
 }
 
 // ios system translations
 const ios = {
   NSFaceIDUsageDescription:
-    'Enabling Face ID allows you quick and secure access to your account.',
-  NSCameraUsageDescription: 'Enabling camera allows you to scan QR codes.',
+    'Activez Face ID pour un accès rapide et sécurisé à votre compte.',
+  NSCameraUsageDescription: 'Activez la caméra pour pouvoir scanner des QR codes.',
 }
 
 const l10n = {
@@ -43,445 +43,444 @@ const l10n = {
     datetime,
     ios,
     notifications: {
-      offline: 'You are offline. Please check settings on your device.',
+      offline: 'Vous êtes hors ligne. Veuillez vérifier les paramètres de votre appareil.',
     },
-    currentLanguageName: 'English',
+    currentLanguageName: 'Français',
   },
   confirmationDialogs: {
     logout: {
-      title: 'Logout',
-      message: 'Do you really want to logout?',
-      yesButton: 'Yes',
-      noButton: 'No',
+      title: 'Déconnexion',
+      message: 'Voulez-vous vraiment vous déconnecter ?',
+      yesButton: 'Oui',
+      noButton: 'Non',
     },
   },
   errorDialogs: {
     generalError: (message: string) => ({
-      title: 'Unexpected error',
-      message: `Requested operation failed. This is all we know: ${message}`,
+      title: 'Erreur inattendu',
+      message: `La requête a échoué. C'est tout ce que nous savons: ${message}`,
       yesButton: common.ok,
     }),
     pinMismatch: {
-      title: 'Invalid PIN',
-      message: 'PINs do not match.',
+      title: 'PIN invalide',
+      message: 'Les PINs ne correspondent pas.',
       yesButton: common.ok,
     },
     incorrectPin: {
-      title: 'Invalid PIN',
-      message: 'The PIN you entered is incorrect.',
+      title: 'PIN invalide',
+      message: 'Le PIN que vous avez saisi est incorrect.',
       yesButton: common.ok,
     },
     incorrectPassword: {
-      title: 'Wrong password',
-      message: 'Password you provided is incorrect.',
+      title: 'Mauvais mot de passe',
+      message: 'Le mot de passe que vous avez saisi est incorrect.',
       yesButton: common.ok,
     },
     biometricsIsTurnedOff: {
-      title: 'Biometrics was turned off',
-      message: 'It seems that you turned off biometrics, please turn it on',
+      title: 'Capteur Biométrique désactivé',
+      message: 'Il semble que vous ayez désactivé le capteur biométrique. Veuillez le réactiver',
       yesButton: common.ok,
     },
     walletKeysInvalidated: {
-      title: 'Biometrics changed',
+      title: 'Empreinte biométrique changée',
       message:
-        'We detected that your biometrics in phone changed. ' +
-        'As a result the easy transaction confirmation was disabled ' +
-        'and transaction submitting is allowed only with master password. ' +
-        'You can re-enable easy transactions confirmation in settings',
+        `Nous avons détecté un changement de l'empreinte biométrique de votre téléphone. ` +
+        'En conséquence, la validation facile des transactions a été désactivé ' +
+        `et n'est disponible qu'avec votre mot de passe. ` +
+        `Vous pouvez réactiver les transactions à l'aide du capteur biométrique dans les paramètres.`,
       yesButton: 'OK',
     },
     networkError: {
-      title: 'Network error',
+      title: 'Erreur réseau',
       message:
-        'Error connecting to the server. ' +
-        'Please check your internet connection',
+        'Erreur de connexion au serveur. ' +
+        'Veuillez vérifier votre connexion internet',
       yesButton: common.ok,
     },
     disableEasyConfirmationFirst: {
-      title: 'Action failed',
+      title: `L'action a échoué`,
       message:
-        'Please disable easy confirmation function in all ' +
-        'your wallets first',
+        `Veuillez d'abord désactiver la confirmation facile sur tous vos portefeuille`,
       yesButton: common.ok,
     },
     enableFingerprintsFirst: {
-      title: 'Action failed',
+      title: `L'action a échoué`,
       message:
-        'You need to enable biometrics in your device first in order ' +
-        'to be able link it with this app',
+        `Vous devez d'abord activer le capteur biométrique de cet appareil ` +
+        `avant de pouvoir l'utiliser dans cette application`,
       yesButton: 'OK',
     },
     enableSystemAuthFirst: {
-      title: 'Lock screen disabled',
+      title: 'Vérrouillage désactivé',
       message:
-        'You probably disabled lock screen in your phone. You need to ' +
-        'disable easy transaction confirmation first. Please set up ' +
-        'you lock screen (PIN / Password / Pattern) on your phone ' +
-        'and then restart application. After this action you should be ' +
-        'able to disable lock screen ' +
-        'on your phone and use this application',
+        `Vous avez probablement désactivé le verrouillage de votre téléphone. Vous devez d'abord ` +
+        'désactiver la validation facile des transactions. ' +
+        'Veuillez configurer le vérrouillage (PIN / Mot de passe / Forme) de votre téléphone  ' +
+        `, puis redémarrer l'application. Après cela vous devriez pouvoir ` +
+        'désactiver le vérrouillage de votre téléphone ' +
+        'et continuer à utiliser cette application.',
       yesButton: 'OK',
     },
     wrongPinError: {
-      title: 'Invalid PIN',
-      message: 'PIN is incorrect.',
+      title: 'PIN invalide',
+      message: 'Le PIN est incorrect.',
       yesButton: 'OK',
     },
   },
   LanguageSelectionScreen: {
     languages,
-    continueButton: 'Choose language',
+    continueButton: 'Choisissez langue',
   },
   YoroiDescription: {
-    line1: 'Yoroi is Web Light Wallet for Cardano',
-    line2: 'Secure Fast Simple',
-    byEmurgo: 'By',
+    line1: 'Yoroi est un portefeuille léger pour Cardano',
+    line2: 'Sécurisé Rapide Facile',
+    byEmurgo: 'Par',
   },
   AppStartScreen: {
-    loginButton: 'Login',
+    loginButton: 'Connexion',
   },
   WithPinLoginScreen: {
-    title: 'Enter PIN',
+    title: 'Entrez PIN',
   },
   CreateWalletScreen: {
-    title: 'Create a new wallet',
+    title: 'Créer un nouveau portefeuille',
   },
   CreateOrRestoreWalletScreen: {
-    title: 'Add wallet',
-    createWalletButton: 'Create new wallet',
-    restoreWalletButton: 'Restore wallet from backup',
+    title: 'Ajouter un portefeuille',
+    createWalletButton: 'Creér nouveau portefeuille',
+    restoreWalletButton: 'Restaurer depuis une sauvegarde',
   },
   // On CreateWalletScreen
   MnemonicExplanationModal: {
     paragraph1: [
       inline([
         normal(
-          'On the following screen, you will see a set of 15 random words. ',
+          `Sur l'écran suivant, vous verrez une série de 15 mots aléatoires. `,
         ),
-        normal('This is your '),
-        bold('wallet recovery phrase. '),
-        normal('It can be entered in any version '),
-        normal('of Yoroi in order to back up or restore '),
-        normal('your wallet`s funds and private key.'),
+        normal('Ils constituent '),
+        bold('la phrase de récupération de votre portefeuille. '),
+        normal(`Elle peut être saisie dans n'importe qu'elle version `),
+        normal('de Yoroi afin de sauvegarder ou de récupérer '),
+        normal('les fonds de votre portefeuille ou bien votre clé privé.'),
       ]),
     ],
     paragraph2: [
       inline([
-        normal('Make sure '),
-        bold('nobody looks into your screen '),
-        normal('unless you want them to have access to your funds.'),
+        normal('Assurez vous que '),
+        bold('personne ne soit en train de regarder votre écran '),
+        normal('à moins que nous vouliez que cette personne ai accès à vos fonds.'),
       ]),
     ],
-    nextButton: 'I understand',
+    nextButton: `J'ai compris`,
   },
   WalletNameAndPasswordForm: {
     walletNameInput: {
-      label: 'Wallet name',
+      label: 'Nom portefeuille',
       errors: walletNameErrors,
     },
     newPasswordInput: {
-      label: 'Wallet password',
+      label: 'Mot de passe portefeuille',
     },
     repeatPasswordInput: {
-      label: 'Repeat password',
+      label: 'Répétez mot de passe',
       errors: {
-        passwordsDoNotMatch: 'Passwords do not match',
+        passwordsDoNotMatch: 'Les mots de passe ne correspondent pas',
       },
     },
-    continueButton: 'Continue',
+    continueButton: 'Continuer',
   },
   PasswordStrengthIndicator: {
-    passwordRequirementsNote: 'The password needs to contain at least:',
-    passwordMinLength: '7 characters',
-    passwordUpperChar: '1 uppercase letter',
-    passwordLowerChar: '1 lowercase letter',
-    passwordNumber: '1 number',
-    continueButton: 'Continue',
-    passwordBigLength: '12 characters',
-    or: 'Or',
+    passwordRequirementsNote: 'Le mot de passe doit contenir au moins:',
+    passwordMinLength: '7 caractères',
+    passwordUpperChar: '1 lettre majuscule',
+    passwordLowerChar: '1 lettre minuscule',
+    passwordNumber: '1 nombre',
+    continueButton: 'Continuer',
+    passwordBigLength: '12 caractères',
+    or: 'Ou',
   },
   TransactionHistoryScreeen: {
     syncErrorBanner: {
-      textWithoutRefresh: 'We are experiencing synchronization issues.',
+      textWithoutRefresh: 'Problèmes de synchronisation.',
       textWithRefresh:
-        'We are experiencing synchronization issues. Pull to refresh',
+        'Problèmes de synchronisation. Tirer pour rafraichir',
     },
     availableFundsBanner: {
       label: common.availableFunds,
     },
-    noTransactions: 'No transactions to show yet',
+    noTransactions: 'Pas de transactions pour le moment',
     transaction: {
       transactionType: {
-        SENT: 'ADA sent',
-        RECEIVED: 'ADA received',
-        SELF: 'Intrawallet',
-        MULTI: 'Multiparty',
+        SENT: 'ADA envoyés',
+        RECEIVED: 'ADA reçus',
+        SELF: 'Mouvement interne',
+        MULTI: 'Multi-tiers',
       },
-      assuranceLevelHeader: 'Assurance level:',
+      assuranceLevelHeader: 'Niveau de confiance:',
       assuranceLevel: {
-        LOW: 'Low',
-        MEDIUM: 'Medium',
-        HIGH: 'High',
-        PENDING: 'Pending',
-        FAILED: 'Failed',
+        LOW: 'Faible',
+        MEDIUM: 'Moyen',
+        HIGH: 'Fort',
+        PENDING: 'En cours',
+        FAILED: 'Echoué',
       },
-      fee: 'Fee:',
+      fee: 'Frais:',
     },
-    sendButton: 'Send',
-    receiveButton: 'Receive',
+    sendButton: 'Envoyer',
+    receiveButton: 'Recevoir',
   },
   TransactionDetailsScreen: {
     transactionType: {
-      SENT: 'Sent funds',
-      RECEIVED: 'Received funds',
-      SELF: 'Intrawallet transaction',
-      MULTI: 'Multi-party transaction',
+      SENT: 'Fonds envoyés',
+      RECEIVED: 'Fonds reçus',
+      SELF: 'Transactions internes',
+      MULTI: 'Transactions multi-tiers',
     },
-    fee: 'Fee: ',
-    fromAddresses: 'From Addresses',
-    toAddresses: 'To Addresses',
-    transactionId: 'Transaction ID',
-    txAssuranceLevel: 'Transaction assurance level',
+    fee: 'Frais: ',
+    fromAddresses: `Adresses d'origine`,
+    toAddresses: 'Addresses de destination',
+    transactionId: 'ID transaction',
+    txAssuranceLevel: 'Niveau de confiance de la transaction',
     formatConfirmations: (cnt: number) =>
       `${cnt} ${pluralizeEn(cnt, 'CONFIRMATION', 'CONFIRMATIONS')}`,
-    formatOmittedCount: (cnt: number) => `+ ${cnt} omitted`,
+    formatOmittedCount: (cnt: number) => `+ ${cnt} omis`,
     addressPrefix: {
       receive: (idx: number) => `/${idx}`,
       change: (idx: number) => '/change',
-      notMine: 'not mine',
+      notMine: 'pas la mienne',
     },
   },
   SendAdaScreen: {
-    title: 'Send',
+    title: 'Envoyer',
     fee: {
-      label: 'Fee',
+      label: 'Frais',
       notAvailable: '-',
     },
     balanceAfter: {
-      label: 'Balance after',
+      label: 'Solde après',
       notAvailable: '-',
     },
     availableFundsBanner: {
       label: common.availableFunds,
-      isFetching: 'Checking balance...',
+      isFetching: 'Vérification solde...',
       notAvailable: '-',
     },
     addressInput: {
-      label: 'Address',
+      label: 'Adresse',
       errors: {
-        invalidAddress: 'Please enter valid address',
+        invalidAddress: 'Veuillez entrer une adresse valide',
       },
     },
     amountInput: {
-      label: 'Amount',
+      label: 'Montant',
       errors: {
         invalidAmount: {
           // Note(ppershing): first two should be auto-corrected
           // by the input control
-          INVALID_AMOUNT: 'Please enter valid amount',
-          TOO_MANY_DECIMAL_PLACES: 'Please enter valid amount',
+          INVALID_AMOUNT: 'Veuilez entrer un montant valide',
+          TOO_MANY_DECIMAL_PLACES: 'Veuilez entrer un montant valide',
 
-          TOO_LARGE: 'Amount too large',
-          NEGATIVE: 'Amount must be positive',
+          TOO_LARGE: 'montant trop élevé',
+          NEGATIVE: 'le montant doit être positif',
         },
-        insufficientBalance: 'Not enough money to make this transaction',
+        insufficientBalance: 'Solde insuffisant pour effectuer cette transaction',
       },
     },
-    continueButton: 'Continue',
+    continueButton: 'Continuer',
     errorBanners: {
       // note: offline banner is shared with TransactionHistory
       networkError:
-        'We are experiencing issues with fetching your current balance. ' +
-        'Click to retry.',
+        'Nous rencontrons un problème pendant la vérification de votre solde. ' +
+        'Cliquez pour réessayer.',
       pendingOutgoingTransaction:
-        'You cannot send a new transaction while ' +
-        'an existing one is still pending',
+        'Vous ne pouvez pas envoyer une nouvelle transaction ' +
+        `pendant qu'une autre est toujours en cours de validation`,
     },
   },
   ReadQRCodeAddressScreen: {
-    title: 'Scan QR code address',
+    title: `Scanner l'adresse du QR code`,
   },
   ConfirmSendAdaScreen: {
-    title: 'Send',
-    amount: 'Amount',
+    title: 'Envoyer',
+    amount: 'Montant',
     availableFundsBanner: {
       label: common.availableFunds,
     },
-    balanceAfterTx: 'Balance after transaction',
-    fees: 'Fees',
-    password: 'Wallet password',
-    receiver: 'Receiver',
-    confirmButton: 'Confirm',
-    sendingModalTitle: 'Submitting transaction',
+    balanceAfterTx: 'Solde après transaction',
+    fees: 'Frais',
+    password: 'Mot de passe du portefeuille',
+    receiver: 'Destinataire',
+    confirmButton: 'Confirmer',
+    sendingModalTitle: 'Envoi de la transaction',
     pleaseWait: common.pleaseWait,
   },
   WalletCredentialsScreen: {
-    title: 'Wallet credentials',
+    title: 'Identifiants du portefeuille',
   },
   ChangeWalletNameScreen: {
-    title: 'Change wallet name',
+    title: 'Changer le nom du portefeuille',
     walletNameInput: {
-      label: 'Wallet name',
+      label: 'Nom portefeuille',
       errors: walletNameErrors,
     },
-    changeButton: 'Change name',
+    changeButton: 'Changer nom',
   },
   ReceiveScreen: {
-    title: 'Receive',
+    title: 'Recevoir',
     infoText:
-      'Share this address to receive payments. ' +
-      'To protect your privacy, new addresses are ' +
-      'generated automatically once you use them.',
-    generateButton: 'Generate another address',
-    cannotGenerate: 'You have to use some of your addresses',
-    freshAddresses: 'Fresh addresses',
-    usedAddresses: 'Used addresses',
+      'Partagez cette adresse pour recevoir des paiements. ' +
+      'Afin de protéger votre vie privée, une nouvelle adresse ' +
+      `est généré automatiquement à chaque fois que vous l'utilisez.`,
+    generateButton: 'Générer une nouvelle adresse',
+    cannotGenerate: 'Vous devez utiliser certaines de vos adresses',
+    freshAddresses: 'Nouvelles adresses',
+    usedAddresses: 'Adresses utilisées',
   },
   AddressDetailsModal: {
-    walletAddress: 'Your wallet address',
-    BIP32path: 'BIP32 path:',
-    copyLabel: 'Copy address',
-    copiedLabel: 'Copied',
+    walletAddress: 'Votre adresse de portefeuille',
+    BIP32path: 'Chemin BIP32:',
+    copyLabel: 'Copier adresse',
+    copiedLabel: 'Copiée',
   },
   MnemonicShowScreen: {
-    title: 'Recovery phrase',
+    title: 'Phrase de récupération',
     mnemonicNote:
-      'Please, make sure you have carefully written down your ' +
-      'recovery phrase somewhere safe. ' +
-      'You will need this phrase to use and restore your wallet. ' +
-      'Phrase is case sensitive.',
-    confirmationButton: 'Yes, I have written it down',
+      'Veuillez vous assurer vous que vous avez écrit cette phrase sur papier ' +
+      `et l'avez stocké dans un endroit sûr.` +
+      'Vous aurez besoin de cette phrase pour utiliser et restaurer votre portefeuille. ' +
+      'La phrase est sensible aux majuscules/minuscules.',
+    confirmationButton: 'Je confirme avoir écrit ma phrase sur papier',
   },
   MnemonicBackupImportanceModal: {
-    title: 'Recovery phrase',
+    title: 'Phrase de récupération',
     keysStorageCheckbox:
-      'I understand that my secret keys are held securely ' +
-      'on this device only, not on the company`s servers',
+      'Je comprends que mes clés privés sont stockés de manière sécurisé ' +
+      `seulement sur cet appareil, et non pas sur les serveurs de l'entreprise`,
     newDeviceRecoveryCheckbox:
-      'I understand that if this application is moved to another device ' +
-      'or delete, my money can be only recovered with the backup phrase that ' +
-      'I have written down and saved in secure place.',
-    confirmationButton: 'I understand',
+      `Je comprends que si l'application est transféré sur un autre appareil ` +
+      `ou supprimé, mes fonds ne peuvent être récupérés qu'à l'aide de ma phrase de récupération ` +
+      `que j'ai écrit sur papier et stocké dans un endroit sûr.`,
+    confirmationButton: 'Je comprends',
   },
   MnemonicCheckScreen: {
-    title: 'Recovery phrase',
+    title: 'Phrase de récupération',
     instructions:
-      'Tap each word in the correct order to verify your recovery phrase',
+      'Touchez les mots dans le bon ordre pour confirmer votre phrase de récupération',
     mnemonicWordsInput: {
-      label: 'Recovery phrase',
+      label: 'Phrase de récupération',
       errors: {
-        invalidPhrase: 'Recovery phrase does not match',
+        invalidPhrase: 'La phrase de récupération ne correspond pas',
       },
     },
-    clearButton: 'Clear',
-    confirmButton: 'Confirm',
+    clearButton: 'Effacer',
+    confirmButton: 'Confirmer',
   },
   RestoreWalletScreen: {
-    title: 'Restore wallet',
+    title: 'Restaurer portefeuille',
     instructions:
-      'To restore your wallet please provide the recovery phrase you ' +
-      'received when you created your wallet for the first time.',
+      'Pour restaurer votre portefeuille, veuillez fournir la phrase de récupération ' +
+      'que vous avez reçu lors de la création de votre portefeuille.',
     mnemonicInput: {
-      label: 'Recovery phrase',
+      label: 'Phrase de récupération',
       errors: {
-        TOO_LONG: 'Phrase is too long. ',
-        TOO_SHORT: 'Phrase is too short. ',
-        INVALID_CHECKSUM: 'Please enter valid mnemonic.',
+        TOO_LONG: 'La phrase est trop longue. ',
+        TOO_SHORT: 'La phrase est trop courte. ',
+        INVALID_CHECKSUM: 'Veuillez vérifier la syntaxe de votre phrase (mnemonic).',
         UNKNOWN_WORDS: (words: Array<string>) => {
           const wordlist = words.map((word) => `'${word}'`).join(', ')
-          const areInvalid = `${pluralizeEn(words.length, 'is', 'are')} invalid`
+          const areInvalid = `${pluralizeEn(words.length, 'est', 'sont')} invalid`
           return `${wordlist} ${areInvalid}`
         },
       },
     },
-    restoreButton: 'Restore wallet',
+    restoreButton: 'Restaurer portefeuille',
   },
   SettingsScreen: {
     WalletTab: {
-      title: 'Settings',
-      tabTitle: 'Wallet',
+      title: 'Paramètres',
+      tabTitle: 'Portefeuille',
 
-      switchWallet: 'Switch wallet',
-      logout: 'Logout',
+      switchWallet: 'Changer portefeuille',
+      logout: 'Déconnexion',
 
-      walletName: 'Wallet name',
+      walletName: 'Nom portefeuille',
 
-      security: 'Security',
-      changePassword: 'Change password',
-      easyConfirmation: 'Easy transaction confirmation',
+      security: 'Sécurité',
+      changePassword: 'Changer mot de passe',
+      easyConfirmation: 'Confirmation facile des transactions',
 
-      removeWallet: 'Remove wallet',
+      removeWallet: 'Supprimer portefeuille',
     },
     ApplicationTab: {
-      title: 'Settings',
+      title: 'Paramètres',
       tabTitle: 'Application',
 
-      language: 'Your language',
+      language: 'Votre langue',
 
-      security: 'Security',
-      changePin: 'Change PIN',
-      biometricsSignIn: 'Sign in with your biometrics',
+      security: 'Sécurité',
+      changePin: 'Changer PIN',
+      biometricsSignIn: 'Connexion avec capteur biométrique',
 
-      crashReporting: 'Crash reporting',
+      crashReporting: 'Rapport de crash',
       crashReportingText:
-        'Send crash reports to Emurgo. ' +
-        'Changes to this option will be reflected ' +
-        ' after restarting the application.',
+        'Envoyers les rapports de crash a Emurgo. ' +
+        'Les changements de ce paramètres seront effectifs ' +
+        ` après le redémarrage de l'application.`,
 
-      termsOfUse: 'Terms of Use',
+      termsOfUse: `Termes d'utilisation`,
       support: 'Support',
     },
   },
   SupportScreen: {
     title: 'Support',
     faq: {
-      label: 'See frequently asked questions',
+      label: 'Questions les plus fréquentes',
       description:
-        'If you are experiencing issues, please see the FAQ ' +
-        'on Yoroi website for quidance on known issues.',
+        'Si vous rencontrez des problèmes, veuillez consulter la FAQ ' +
+        'sur le site web de Yoroi pour des guides de résolution technique.',
       url: 'https://yoroi-wallet.com/faq/',
     },
     report: {
-      label: 'Report a problem',
+      label: 'Signaler un problème',
       description:
-        'If the FAQ does not solve the issue you are ' +
-        'experiencing, please use our Support request feature.',
+        'Si la FAQ ne vous permet pas de résoudr le problème ' +
+        `que vous rencontrez, merci d'utiliser la fonction de Support.`,
       url: 'https://yoroi-wallet.com/support/',
     },
   },
   TermsOfServiceScreen: {
-    title: 'Terms of Service Agreement',
+    title: `Conditions d'utilisation`,
     content: termsOfService,
-    aggreeClause: 'I agree with terms of service',
-    continueButton: 'Accept',
-    savingConsentModalTitle: 'Initializing',
+    aggreeClause: `J'accepte les conditions d'utilisation`,
+    continueButton: 'Accepter',
+    savingConsentModalTitle: 'Initialisation',
     pleaseWait: common.pleaseWait,
   },
   WalletSelectionScreen: {
-    header: 'Your wallets',
-    addWalletButton: 'Add wallet',
+    header: 'Vos portefeuille',
+    addWalletButton: 'Ajouter portefeuille',
   },
   BiometricsLinkScreen: {
     enableFingerprintsMessage:
-      'Enable use of fingerprints in device settings first!',
-    notNowButton: 'Not now',
-    linkButton: 'Link',
-    headings: ['Use your fingerprint'],
-    subHeadings: ['for faster, easier access', 'to your Yoroi wallet'],
+      `Veuillez d'abord activer le capteur d'empreinte de votre appareil`,
+    notNowButton: 'Pas pour le moment',
+    linkButton: 'Lien',
+    headings: ['Utilisez votre empreinte'],
+    subHeadings: ['pour un accès plus rapide et plus facile', ' du portefeuille Yoroi'],
   },
   // TODO(ppershing): this localization is a mess
   BiometricsAuthScreen: {
-    authorizeOperation: 'Authorize operation',
-    useFallbackButton: 'Use fallback',
-    headings: ['Authorize with your', 'fingerprint'],
-    cancelButton: 'Cancel',
+    authorizeOperation: `Autoriser l'opération`,
+    useFallbackButton: 'Utiliser alternative',
+    headings: ['Autoriser avec votre', 'empreinte'],
+    cancelButton: 'Annuler',
     errors: {
-      NOT_RECOGNIZED: 'Fingerprint was not recognized try again',
-      SENSOR_LOCKOUT: 'You used too many fingers sensor is disabled',
+      NOT_RECOGNIZED: `L'empreinte n'a pas été reconnue, veuillez réessayer`,
+      SENSOR_LOCKOUT: 'Vous avez utilisé trop de doigts, le capteur a été désactivé',
       SENSOR_LOCKOUT_PERMANENT:
-        'You permanently locked out your fingerprint sensor. Use fallback.',
-      DECRYPTION_FAILED: 'Fingerprint sensor failed please use fallback',
-      UNKNOWN_ERROR: 'Unknown error',
+        `Vous avez désactivé de manière permanente votre capteur d'empreinte. Utilisez l'alternative.`,
+      DECRYPTION_FAILED: `Le capteur d'empreinte a échoue, utilisez l'alternative`,
+      UNKNOWN_ERROR: 'Erreur inconnue',
     },
   },
   RemoveWalletScreen: {
@@ -492,85 +491,85 @@ const l10n = {
         'make sure you have written down the mnemonic.',
       paragraph2: 'To confirm this operation type the wallet name below.',
     },
-    walletName: 'Wallet name',
-    walletNameInput: 'Wallet name',
-    remove: 'Remove wallet',
+    walletName: 'Nom portefeuille',
+    walletNameInput: 'Nom portefeuille',
+    remove: 'Supprimer portefeuille',
     hasWrittenDownMnemonic:
-      'I have written down mnemonic of this wallet and understand ' +
-      'that I cannot recover the wallet without it.',
+      `J'ai écrit sur papier la phrase de récupération de ce portefeuille et je comprends` +
+      'que je ne pourrais pas le récupérer sans celle-ci.',
   },
 
   ChoosePinScreen: {
-    title: 'Set PIN',
+    title: 'Enregistrer PIN',
     PinRegistrationForm: {
       PinInput: {
-        title: 'Enter the PIN',
-        subtitle: 'Choose new PIN for quick access to wallet.',
+        title: 'Saisir le PIN',
+        subtitle: 'Choisir un nouveau PIN pour un accès rapide au portefeuille.',
       },
       PinConfirmationInput: {
-        title: 'Repeat PIN',
+        title: 'Répéter PIN',
       },
     },
   },
   ChangePasswordScreen: {
-    title: 'Change wallet password',
+    title: 'Changer le mote de passe du portefeuille',
     oldPasswordInput: {
-      label: 'Current password',
+      label: 'Mot de passe actuel',
     },
     newPasswordInput: {
-      label: 'New password',
+      label: 'Nouveau mot de passe',
     },
     repeatPasswordInput: {
-      label: 'Repeat new password',
+      label: 'Répéter mot de passe',
       errors: {
-        passwordsDoNotMatch: 'Passwords do not match',
+        passwordsDoNotMatch: 'Les mots de passe ne correspondent pas',
       },
     },
-    continueButton: 'Change password',
+    continueButton: 'Changer mot de passe',
   },
   ChangeCustomPinScreen: {
-    title: 'Change PIN',
+    title: 'Changer PIN',
     CurrentPinInput: {
-      title: 'Enter PIN',
-      subtitle: 'Enter your current PIN',
+      title: 'Saisir PIN',
+      subtitle: 'Saisir PIN actuel',
     },
     PinRegistrationForm: {
       PinInput: {
-        title: 'Enter PIN',
-        subtitle: 'Choose new PIN for quick access to wallet.',
+        title: 'Saisir PIN',
+        subtitle: 'Choisir nouveau PIN pour un accès rapide au portefeuille.',
       },
       PinConfirmationInput: {
-        title: 'Repeat PIN',
+        title: 'Répéter PIN',
       },
     },
   },
   EasyConfirmationScreen: {
-    title: 'Easy confirmation',
+    title: 'Confirmation facile',
     enable: {
       heading:
-        'This option will allow you to send ADA transactions ' +
-        'from your wallet just by confirming with fingerprint or ' +
-        'face recognition with standard system fallback option. ' +
-        'This makes your wallet less secure. This is a compromise ' +
-        'between UX and security!',
+        `Cette option vous permet d'effectuer des transactions d'ADA ` +
+        'depuis votre portefeuille en confirmant votre empreinte ou bien ' +
+        'votre visage avec une alternative standard du système. ' +
+        `Cela rend votre portefeuille moins sécurisé. C'est un compris ` +
+        `entre l'expérience utilisateur et la sécurité!`,
       warning:
-        'Please remember your master password, as you may need it ' +
-        'in case your biometrics data are removed from the device.',
-      masterPassword: 'Master password',
-      enableButton: 'Enable',
+        'Assurez vous de vous souvenir de votre mot de passe maître. Vous pourriez en avoir besoin ' +
+        'si les informations biométriques sont supprimées de cet appareil.',
+      masterPassword: 'Mot de passe maître',
+      enableButton: 'Activer',
     },
     disable: {
       heading:
-        'By disabling this option you will be able to spend your ADA ' +
-        'only with master password.',
-      disableButton: 'Disable',
+        'En désactivant cette option vous ne pourrez dépenser vos ADA ' +
+        `qu'a l'aide du mot de passe maître.`,
+      disableButton: 'Désactiver',
     },
   },
   Biometry: {
-    approveTransaction: 'Authorize with your fingerprint',
+    approveTransaction: `Autoriser avec l'empreinte`,
     subtitle: '', // subtitle for the biometry dialog Andoid 9
     description: '', // description of the biometry dialog Android 9
-    cancelButton: 'Cancel',
+    cancelButton: 'Annuler',
   },
 }
 
